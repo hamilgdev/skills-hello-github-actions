@@ -66,4 +66,17 @@ jobs:
         env:
           CI: true
     
+  prod-check:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Launch latest changes to the prod
+        run: echo "Nice work, $FIRST_NAME. Deploying to production server on branch $GITHUB_REF"
+        env:
+          FIRST_NAME: hamilgdev
 
